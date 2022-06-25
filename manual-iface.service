@@ -1,0 +1,12 @@
+[Unit]
+Description=Service to bring up/down unconfigured nic enp7s0
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/ip link set enp7s0 up
+ExecStop=/sbin/ip link set enp7s0 down
+
+[Install]
+WantedBy=multi-user.target
